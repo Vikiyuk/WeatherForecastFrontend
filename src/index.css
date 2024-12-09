@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('images/bg.jpg');
+  background-size: cover; /* Make sure the background image covers the full screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.forecast-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  padding: 20px;
+}
+
+.forecast-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 0;
+  gap:20px;
+
+}
+
+.forecast-cell {
+  width: 150px;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #555;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.forecast-cell:hover {
+  background-color: #87ceeb;
+  color:#fff;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.forecast-cell.header {
+  background: #87ceeb;
+  color:#fff;
+  padding: 20px;
+  font-weight: bold;
+}
+.forecast-cell.icon {
+  color:#87ceeb;
+  font-size: 3rem;
+}
+.forecast-cell.icon:hover {
+  color:#fff;
+}
+footer {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+footer p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+footer p:first-child {
+  font-weight: bold;
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 20px;
+  }
+  div {
+    padding: 0;
+  }
+  .forecast-container {
+    padding: 10px;
+    margin: 10px;
+  }
+  .forecast-cell {
+    padding: 8px;
+  }
+  footer {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 18px;
+  }
+  .forecast-cell {
+    font-size: 10px;
+    padding: 6px;
+  }
+  .forecast-container {
+    margin: 10px;
+  }
+}
