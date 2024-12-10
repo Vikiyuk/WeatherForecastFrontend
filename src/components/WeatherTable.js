@@ -47,7 +47,7 @@ const WeatherTable = ({ location }) => {
 
             const fetchWeatherData = async () => {
                 try {
-                    const forecastResponse = await axios.get('http://localhost:5000/weather_forecast', {
+                    const forecastResponse = await axios.get('https://weatherforecastbackend.onrender.com/weather_forecast', {
                         params: { latitude, longitude }
                     });
                     setForecast(forecastResponse.data);
@@ -57,7 +57,7 @@ const WeatherTable = ({ location }) => {
                 }
 
                 try {
-                    const summaryResponse = await axios.get('http://localhost:5000/weekly_weather_summary', {
+                    const summaryResponse = await axios.get('https://weatherforecastbackend.onrender.com/weekly_weather_summary', {
                         params: { latitude, longitude }
                     });
                     setWeeklySummary(summaryResponse.data);
