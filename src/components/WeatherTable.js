@@ -3,10 +3,9 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faCloud, faCloudSun, faCloudRain, faCloudShowersHeavy, faSnowflake, faBolt, faSmog } from '@fortawesome/free-solid-svg-icons';
 
-const WeatherTable = () => {
+const WeatherTable = ({ location }) => {
     const [forecast, setForecast] = useState([]);
     const [weeklySummary, setWeeklySummary] = useState({});
-    const [location, setLocation] = useState(null);
 
     const getWeatherIcon = (wmo_code) => {
         const icon_map = {
@@ -43,12 +42,10 @@ const WeatherTable = () => {
     };
 
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
-                setLocation({ latitude, longitude });
+        if (location) {
+            const { latitude, longitude } = location;
 
+            const fetchWeatherData = async () => {
                 try {
                     const forecastResponse = await axios.get('http://localhost:5000/weather_forecast', {
                         params: { latitude, longitude }
@@ -68,9 +65,11 @@ const WeatherTable = () => {
                     console.error('Error fetching summary data:', error);
                     alert(`Error fetching summary data: ${error.response?.data?.error || error.message}`);
                 }
-            });
+            };
+
+            fetchWeatherData();
         }
-    }, []);
+    }, [location]);
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -80,7 +79,6 @@ const WeatherTable = () => {
         <div>
             {location && (
                 <>
-                    <h1>Weather Forecast</h1>
                     <h2>7-Day Weather Forecast</h2>
                     <div className="forecast-container">
                         <div className="forecast-row">
