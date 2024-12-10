@@ -20,9 +20,11 @@ const LocationSelector = () => {
     };
 
     return (
-        <div>
+        <div className="location-selector-container">
             <h1>Select a Location</h1>
-            <MapSelector onLocationSelect={handleLocationSelect} />
+            <div className="map-container">
+                <MapSelector onLocationSelect={handleLocationSelect} />
+            </div>
             <button onClick={handleShowWeather} disabled={!selectedLocation}>
                 Show Weather
             </button>

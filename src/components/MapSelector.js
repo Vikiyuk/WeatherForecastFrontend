@@ -37,7 +37,7 @@ const MapSelector = ({ onLocationSelect }) => {
             key={uniqueKey}
             center={mapCenter} // Dynamically change the map center based on selected position
             zoom={zoomLevel} // Dynamically change the zoom level based on user click
-            style={{ height: '30vw', width: '100%' }}
+            style={{  width: '100%' }}
             scrollWheelZoom={true}
             dragging={true}
         >

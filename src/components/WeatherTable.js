@@ -76,7 +76,7 @@ const WeatherTable = ({ location }) => {
     };
 
     return (
-        <div>
+        <div className="forecast-table-container">
             {location && (
                 <>
                     <h2>7-Day Weather Forecast</h2>
