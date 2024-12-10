@@ -6,11 +6,15 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import {Switch} from "@mui/material";
 import { DarkMode, LightMode } from '@mui/icons-material';
+
 const App = () => {
-    const [toggleDarkMode, setToggleDarkMode] = useState(true);
+    // Set the default mode to light (false for light mode)
+    const [toggleDarkMode, setToggleDarkMode] = useState(false);
+
     const toggleDarkTheme = () => {
         setToggleDarkMode(!toggleDarkMode);
     };
+
     const lightTheme = createTheme({
         palette: {
             mode: 'light',
@@ -23,10 +27,9 @@ const App = () => {
         },
     });
 
-    // Define the dark theme
     const darkTheme = createTheme({
         palette: {
-            mode: 'dark', // Dark mode
+            mode: 'dark',
             primary: {
                 main: '#90caf9',
             },
@@ -35,6 +38,7 @@ const App = () => {
             },
         },
     });
+
     useEffect(() => {
         if (toggleDarkMode) {
             document.body.style.backgroundImage = 'none';
@@ -48,6 +52,7 @@ const App = () => {
             });
         }
     }, [toggleDarkMode]);
+
     return (
         <ThemeProvider theme={toggleDarkMode ? darkTheme : lightTheme}>
             <CssBaseline />
